@@ -1,0 +1,151 @@
+<!-- Blog Entries Column --> 
+<div class="row" ng-controller="WriteNewCssPseudoController">
+	<div class="col-md-12">
+		<p class="dateandtime">
+			<span class="postdate pull-right">
+				<span class="glyphicon glyphicon-calendar"></span> <span id="date"></span>
+				 | 
+				<span class="glyphicon glyphicon-time"></span> <span id="time"></span>
+			</span>
+			<span class="pull-left">by <a href="index.php">Start Bootstrap</a></span>
+		</p>
+		<div class="clearfix"></div>
+		<hr class="titleseprator">
+	</div>
+<div class="col-md-12">
+	<form name="writepost" ng-submit="submitCssPseudo(newPost);" novalidate>
+	
+	    <div class="form-group">
+	        <label for="postTitle">Title</label>
+	        <input type="text" class="form-control" placeholder="Title" name="title" ng-model="newPost.title" required>
+	        <span class="error" ng-show="writepost.title.$error.required && writepost.title.$dirty">Title is required.</span>
+	        <!-- 
+	        <div class="error" ng-show="writepost.title.$dirty && writepost.title.$invalid">
+	        	<span ng-show="writepost.title.$error.required">Title is required.</span>
+	        </div>
+		  <span>{{writepost.title.$valid}}</span>
+			<span ng-show="writepost.title.$touched && writepost.title.$invalid">The name is required.</span> -->
+	    </div>
+	    
+	    <div class="form-group">
+	        <label for="postSyntex">Syntex</label>
+	        <input type="text" class="form-control" placeholder="Syntex" name="syntex" ng-model="newPost.syntex" required>
+	        <span class="error" ng-show="writepost.syntex.$error.required && writepost.syntex.$dirty">Syntex is required.</span>
+	        <!-- 
+	        <div class="error" ng-show="writepost.syntex.$dirty && writepost.syntex.$invalid">
+	        	<span ng-show="writepost.syntex.$error.required">Syntex is required.</span>
+	        </div>
+	         -->
+	    </div>
+	    
+	    <div class="form-group">
+	        <label for="postCode">Code</label>
+	        <input type="text" class="form-control" placeholder="Code" name="code" ng-model="newPost.code" required>
+	        <span class="error" ng-show="writepost.code.$error.required && writepost.code.$dirty">Code is required.</span>
+	        <!-- 
+	        <div class="error" ng-show="writepost.code.$dirty && writepost.code.$invalid">
+	        	<span ng-show="writepost.code.$error.required">Code is required.</span>
+	        </div>
+	         -->
+	    </div>
+	    <div class="form-group">
+	        <label for="postCompatibility">Compatibility</label>
+	        <div class="row">
+		        <div class="col-lg-12 compatibles">
+			        <label><input type="checkbox">IE6+</label>
+			        <label><input type="checkbox">Firefox</label>
+			        <label><input type="checkbox">Chrome</label>
+			        <label><input type="checkbox">Safari</label>
+			        <label><input type="checkbox">Opera</label>
+		        </div>
+	        </div>
+	        <input type="text" class="form-control" placeholder="Compatibility" name="compatibility" ng-model="newPost.compatibility" required>
+	        <span class="error" ng-show="writepost.compatibility.$error.required && writepost.compatibility.$dirty">Compatibility is required.</span>
+	        <!-- 
+	        <div class="error" ng-show="writepost.compatibility.$dirty && writepost.compatibility.$invalid">
+	        	<span ng-show="writepost.compatibility.$error.required">Compatibility is required.</span>
+	        </div>
+	         -->
+	    </div>
+	    <div class="form-group">
+	        <label for="postDemo">Demo</label>
+	        <input type="text" class="form-control" placeholder="Demo" name="demo" ng-model="newPost.demo" required>
+	        <span class="error" ng-show="writepost.demo.$error.required && writepost.demo.$dirty">Demo is required.</span>
+	        <!-- 
+	        <div class="error" ng-show="writepost.demo.$dirty && writepost.demo.$invalid"><span ng-show="writepost.demo.$error.required">Demo Code is required.</span></div>
+	    	 -->
+	    </div>
+	    <div class="form-group">
+	        <label for="postShortDescription">Short Description</label>
+	        <textarea class="form-control" placeholder="Short Description" name="shortDescription" ng-model="newPost.shortDescription" ng-minlength="100" ng-maxlength="500" required></textarea>
+	        <div class="error" ng-show="writepost.shortDescription.$error.required && writepost.shortDescription.$dirty">
+	        	<span>Short description is required.</span>
+	        	<span ng-if="writepost.shortDescription.minlength">Message must be over 100 characters.</span>
+	        	<span ng-if="writepost.shortDescription.maxlength">Message must not exceed 500 characters.</span>
+	        </div>
+	        <!-- <div class="error" ng-show="writepost.shortDescription.$dirty && writepost.shortDescription.$invalid"><span ng-show="writepost.shortDescription.$error.required">Short description is required.</span></div> -->
+	    </div>
+	    <div class="form-group">
+	        <label for="longDescription">Long Description</label>
+	        <textarea class="form-control" placeholder="Long Description" name="longDescription" ng-model="newPost.longDescription" ng-minlength="100" ng-maxlength="10000" required ></textarea>
+	        <div class="error" ng-show="writepost.longDescription.$error.required && writepost.longDescription.$dirty">
+	        	<span ng-show="required">Long description is required.</span>
+	        	<span ng-show="minlength">Message must be over 100 characters.</span>
+	        	<span ng-show="maxlength">Message must not exceed 10000 characters.</span>
+	        </div>
+	        <!-- 
+	        <div class="error" ng-show="writepost.longDescription.$dirty && writepost.longDescription.$invalid">
+	        	<span ng-show="writepost.longDescription.$error.required">Long description is required.</span>
+	        	<span ng-message="minlength">Message must be over 100 characters.</span>
+	        	<span ng-message="maxlength">Message must not exceed 1000 characters.</span>
+	        </div>
+	         -->
+	    </div>
+	    <div class="form-group">
+	        <label for="longDescription">Image</label>
+	        <input type="file" class="form-control" placeholder="Image" name="image" ng-model="newPost.image">
+	    </div>
+	    <div class="form-group">
+	        <label for="postedBy">PostedBy</label>
+	        <input type="text" class="form-control" id="postedBy" placeholder="PostedBy" name="postedBy" ng-model="newPost.postedBy" required>
+	        <div class="error" ng-show="writepost.postedBy.$error.required && writepost.postedBy.$dirty"><span ng-show="writepost.postedBy.$error.required">Posted By is required.</span></div>
+	        <!-- 
+	        <div class="error" ng-show="writepost.postedBy.$dirty && writepost.postedBy.$invalid"><span ng-show="writepost.postedBy.$error.required">Posted By is required.</span></div>
+	    	 -->
+	    </div>
+	    
+	    <button type="submit" class="btn btn-primary" ng-disabled="writepost.title.$invalid || writepost.syntex.$invalid || writepost.code.$invalid || writepost.compatibility.$invalid || writepost.demo.$invalid || writepost.shortDescription.$invalid || writepost.longDescription.$invalid || writepost.postedBy.$invalid">Post</button>
+	    
+	     <!--
+
+	    
+	    <button type="submit" class="btn btn-primary" ng-disabled="writepost.title.$dirty && writepost.title.$invalid || writepost.syntex.$dirty && writepost.syntex.$invalid || writepost.code.$dirty && writepost.code.$invalid || writepost.compatibility.$dirty && writepost.compatibility.$invalid || writepost.demo.$dirty && writepost.demo.$invalid || writepost.shortDescription.$dirty && writepost.shortDescription.$invalid || writepost.longDescription.$dirty && writepost.longDescription.$invalid || writepost.postedBy.$dirty && writepost.postedBy.$invalid">Post</button>
+
+
+
+
+	     ng-click="redirective();" -->
+	     
+	    <a href="/#/csspseudo" id="goToCsspseudo"></a>
+	</form>
+</div>
+</div>
+<script>
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('date').innerText = Date();
+    document.getElementById('time').innerText = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+startTime();
+
+</script>

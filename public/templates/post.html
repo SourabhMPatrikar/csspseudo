@@ -1,0 +1,74 @@
+<div class="row">
+    <div class="col-md-12">
+    	<h1 class="page-header">{{pageHeading}} <small>{{pageSubHeading}}</small></h1>
+	</div>
+	<div class="col-md-12">
+		<div class="row grid">
+			<div class="col-md-4 grid-item" ng-repeat="post in posts" id="csspseudo{{post.id}}">
+				<div class="blog-post col-xs-12">
+					<h2>
+						<a href="/#/csspseudo/{{post._id}}">
+							<span class="posttitle">{{post.title}}</span>
+							<i>(</i>
+							<i class="postsyntex">{{post.syntex}}</i>
+							<i>)</i>
+						</a>
+					</h2>
+					<hr class="titleseprator">
+					<p class="lead">
+						by <a href="#">{{post.postedBy}}</a>
+						<span class="postdate pull-right">
+							<span class="glyphicon glyphicon-calendar"></span> <span>{{post.date}}</span>
+							 | 
+							<span class="glyphicon glyphicon-time"></span> <span>{{post.time}}</span>
+						</span>
+					</p>
+					
+					<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+					<hr>
+					<div class="post-shortdescriptoin" ng-bind="post.shortDescription"></div>
+					<!-- 
+					<div class="browser-support" ng-bind="post.compatibility"></div>
+					<div class="post-example">
+						<h4>Example</h4>
+						<h1>
+						<code class="col-lg-12">{{post.code}}
+							<code class="col-lg-12 postwriting">{{post.demo}}</code>
+						</code>
+						</h1>
+					</div> -->
+					<div class="btn-hold"><a class="btn btn-info" href="/#/csspseudo/{{post._id}}">Read More <span class="glyphicon glyphicon-chevron-right"></span></a></div>
+					
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<ul class="pager">
+    <li class="previous">
+        <a href="#">&larr; Older</a>
+    </li>
+    <li class="next">
+        <a href="#">Newer &rarr;</a>
+    </li>
+</ul>
+<script type="text/javascript">
+setTimeout(function(){
+	var elem = document.querySelector('.grid');
+	var msnry = new Masonry( elem, {
+	  // options
+	  itemSelector: '.grid-item'
+	  //,
+	  //columnWidth: 200
+	});
+
+	// element argument can be a selector string
+	//   for an individual element
+	var msnry = new Masonry( '.grid', {
+	  // options
+	});
+},1000);
+
+</script>

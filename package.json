@@ -1,0 +1,32 @@
+{
+  "name": "csspseudo",
+  "version": "0.0.0",
+  "public": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "body-parser": "~1.15.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.5.2",
+    "express": "^4.14.0",
+    "masonry-layout": "^4.1.1",
+    "mongodb": "^2.2.11",
+    "morgan": "~1.7.0",
+    "serve-favicon": "~2.3.0"
+  },
+  "description": "Blog about pseudo in CSS",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SourabhMPatrikar/csspseudo.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SourabhMPatrikar/csspseudo/issues"
+  },
+  "homepage": "https://github.com/SourabhMPatrikar/csspseudo#readme"
+}

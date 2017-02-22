@@ -1,0 +1,130 @@
+<div class="row">
+
+	<div class="col-md-12" class="postcollection" style="border:5px solid #000;">
+		<div ng-init="postdetail as post ">
+		<!-- <div class="blog-post" ng-repeat="post in postdetail track by $id(post)" ng-class="{done: post.done}"> -->
+		<!-- <div class="blog-post" ng-repeat="post in postdetail track by model.id" ng-class="{done: post.done}"> -->
+		<!-- <div class="blog-post" ng-repeat="post in postdetail track by post._id" > -->
+		<div class="blog-post" >
+			<i class="postsyntex" id="postId" style="display:none;">{{postdetail._id}}</i>
+			<h2>
+				<a href="/#/csspseudo/{{post._id}}">
+					<span class="posttitle" id="title">{{postbyid.post.title}}</span>
+					<i>[</i>
+					<i class="postsyntex">{{postdetail.syntex}}</i>
+					<i>]</i>
+				</a>
+			</h2>
+			<hr class="titleseprator">
+			<p class="lead">
+				by <a href="#" id="postedBy">{{postdetail.postedBy}}</a>
+				<span class="postdate pull-right">
+					<span class="glyphicon glyphicon-calendar"></span> <span>{{postdetail.date}}</span>
+					 | 
+					<span class="glyphicon glyphicon-time"></span> <span>{{postdetail.time}}</span>
+				</span>
+			</p>
+			
+			<img class="img-responsive" src="http://placehold.it/900x300" alt="">
+			<hr>
+			<div class="post-shortdescriptoin" ng-bind="postdetail.longDescription"></div>
+			<div class="browser-support" ng-bind="postdetail.compatibility"></div>
+			<div class="post-example">
+				<h4>Example</h4>
+				<h1>
+				<code class="col-lg-12">{{postdetail.code}}
+					<code class="col-lg-12 postwriting">{{postdetail.demo}}</code>
+				</code>
+				</h1>
+			</div>
+			<div class="btn-hold backtocsspseudo">
+				<span class="pull-left">
+					<a class="btn btn-info" href="/#/csspseudo#csspseudo{{postdetail._id}}"><span class="glyphicon glyphicon-chevron-left"></span>Back to CSSPseudo </a>
+					<a class="btn btn-info" href="/#/updatecsspseudo/{{postdetail._id}}"> Update </a>
+					<a class="btn btn-info" href="/#/deletecsspseudo/{{postdetail._id}}"> Delete </a>
+				</span>
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		</div>
+	</div>
+		
+	
+<!--  -->
+	<div class="col-md-12" style="border:5px solid red;">
+		<div class="blog-post" ng-repeat="comments in postdetail.comment">
+			<i class="postsyntex" id="postId" style="display:none;">{{comments._id}}</i>
+			<hr class="titleseprator">
+			<p class="lead">
+				by <a href="#" id="postedBy">{{comments.postedBy}}</a>
+				<span class="postdate pull-right">
+					<span class="glyphicon glyphicon-calendar"></span> <span>{{comments.date}}</span>
+					 | 
+					<span class="glyphicon glyphicon-time"></span> <span>{{comments.time}}</span>
+				</span>
+			</p>
+			<hr class="titleseprator">
+			<div class="post-shortdescriptoin" ng-bind="comments.comment"></div>			
+			<hr>
+		</div>
+	</div>
+		
+	<div class="col-md-12" style="border:5px solid green;">
+		<div class="clearfix"></div>
+	    <div class="form-group">
+			<span class="pull-right">
+				<a class="btn btn-info"> Comment </a>
+			</span>
+		 </div>
+		<div class="clearfix"></div>
+		<form name="commentpost" ng-submit="submitCssPseudo(newPost);" novalidate>
+			<span class="posttitle">{{post.id}}</span>
+			<span class="posttitle">{{post.title}}</span>
+			<span class="posttitle">{{post.postedBy}}</span>
+		    <div class="form-group">
+				<p class="dateandtime" ng-controller="WriteNewCssPseudoController">
+					<span class="postdate pull-right">
+						<span class="glyphicon glyphicon-calendar"></span> <span id="date"></span>
+						 | 
+						<span class="glyphicon glyphicon-time"></span> <span id="time"></span>
+					</span>
+					<span class="pull-left">by <a href="index.php">Start Bootstrap</a></span>
+				</p>
+				<div class="clearfix"></div>
+				<hr class="titleseprator">
+			</div>
+		    <div class="form-group">
+		        <label for="longDescription">Comment</label>
+		        <textarea class="form-control" placeholder="Long Description" name="longDescription" ng-model="newPost.comment" required></textarea>
+		    </div>
+		    <div class="form-group">
+				<span class="pull-right">
+			        <button type="submit" class="btn btn-primary">Post</button>
+		    		<input type="button" value="Cancel" class="btn" />
+				</span>
+		    </div>
+	    </form>
+	</div>
+	
+	
+	
+</div>
+<script>/*
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('date').innerText = Date();
+    document.getElementById('time').innerText = h + ":" + m + ":" + s;
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+startTime();
+*/
+</script>

@@ -1,0 +1,90 @@
+<!-- Blog Entries Column -->
+<div class="deletepost">
+	<div class="row">
+		<div class="col-md-12" ng-repeat="post in deletepost">
+			<form ng-submit="deleteCssPseudo(post);">
+			    <div class="form-group">
+			        <label for="postTitle">Title</label>
+			        <span>{{post.title}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="postSyntex">Syntex</label>
+			        <span>{{post.syntex}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="postCode">Code</label>
+			        <span>{{post.code}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="postCompatibility">Compatibility</label>
+			        <span>{{post.compatibility}}</span>
+			        <div class="row">
+				        <div class="col-lg-12 compatibles">
+					        <label><input type="checkbox">IE6+</label>
+					        <label><input type="checkbox">Firefox</label>
+					        <label><input type="checkbox">Chrome</label>
+					        <label><input type="checkbox">Safari</label>
+					        <label><input type="checkbox">Opera</label>
+				        </div>
+			    </div>
+			    <div class="form-group">
+			        <label for="postDemo">Demo</label>
+			        <span>{{post.demo}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="postShortDescription">Short Description</label>
+			        <span>{{post.shortDescription}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="longDescription">Long Description</label>
+			        <span>{{post.longDescription}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="longDescription">Image</label>
+			        <span>{{post.image}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label>Posted on (Date)</label>
+			        <span>{{post.date}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label>Posted on (Time)</label>
+			        <span>{{post.time}}</span>
+			    </div>
+			    <div class="form-group">
+			        <label for="longDescription">PostedBy</label>
+			        <span>{{post.postedBy}}</span>
+			    </div>
+			    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#deletePost">Delete</button>
+				<!--  -->
+				<button type="submit" id="deletingPost" style="visibility:hidden; width:0; height:0; overflow:hidden; text-indent:-100px;">Delete</button>
+				
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- Delete Post Begin -->
+<div class="modal fade" id="deletePost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Delete Post</h4>
+      </div>
+      <div class="modal-body">
+        <h3 class="text-center">Are you sure want to delete this post?</h3>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary" data-dismiss="modal" onclick="document.getElementById('deletingPost').click()">Delete</button>
+        <!--  -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Delete Post End -->
+
+<script>
+
+</script>

@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="BlogApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>CSSPSEUDO</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="./bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="./stylesheets/style.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            
+            <!-- /.Login Signup navbar-collapse -->
+            <ul class="nav navbar-nav navbar-right log-nav"> 
+            	<li><a href="javascript:void(0);" data-toggle="modal" data-target="#loginModal"><b>Create an CSSPseudo Account</b></a></li>
+				<li class="dropdown">
+					<a href="javascript:void(0);" id="signIn" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign In! <span class="caret"></span></a>
+					<div class="login-window dropdown-menu" ng-controller="MainController">
+					  <div class="form">
+					    <form name="signupform" class="register-form" ng-submit="submitUserRegistration(user);" novalidate>
+					      <div class="form-group" ng-class="{'has-error':(signupform.firstName.$invalid || signupform.firstName.$pristine)}">
+					      		<input name="firstName" type="text" placeholder="First name" class="form-control" ng-model="user.firstName" required />
+					      		<span class="help-block text-left" ng-show="(signupform.firstName.$touched && signupform.firstName.$pristine)">First name is required.</span>
+						  </div>
+						  
+					      <div class="form-group" ng-class="{'has-error':(signupform.lastName.$invalid || signupform.lastName.$pristine)}">
+					      		<input name="lastName" type="text" placeholder="Last name" class="form-control" ng-model="user.lastName" required />
+					      		<span class="help-block text-left" ng-show="(signupform.lastName.$touched && signupform.lastName.$pristine)">Last name is required.</span>
+						  </div>
+					     
+					      <div class="form-group" ng-class="{'has-error':(signupform.mailId.$invalid || signupform.mailId.$pristine)}">
+							  	<input name="mailId" type="email" placeholder="Email" class="form-control" ng-model="user.mailId" ng-pattern="/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/" required />
+							  	<span class="help-block text-left" ng-show="(signupform.mailId.$touched && signupform.mailId.$pristine)">Email is required.</span>
+							  	<span class="help-block text-left" ng-show="(signupform.mailId.$touched && signupform.mailId.$dirty && signupform.mailId.$error.pattern)">Email is invalid.</span>
+						  </div>
+						  
+					      <div class="form-group" ng-class="{'has-error':(signupform.password.$invalid || signupform.password.$pristine)}">
+					      		<input name="password" type="password" placeholder="Password" class="form-control" ng-model="user.password" ng-pattern="/(?=^.{4,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/" required />
+					      		<span class="help-block text-left" ng-show="(signupform.password.$touched && signupform.password.$pristine)">Password is required.</span>
+							  	<span class="help-block text-left" ng-show="(signupform.password.$touched && signupform.password.$dirty && signupform.password.$error.pattern)">Email is invalid.</span>
+					      </div>
+					      
+					      <div class="form-group" ng-class="{'has-error':(signupform.confirmpassword.$invalid || signupform.confirmpassword.$pristine)}" >
+					      		<input name="confirmpassword" type="password" placeholder="Confirm Password" class="form-control" ng-model="user.confirmpassword" ng-pattern="/(?=^.{4,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/" required />
+					      		<span class="help-block text-left" ng-show="(signupform.confirmpassword.$touched && signupform.confirmpassword.$pristine)">Confirm Password is required.</span>
+							  	<span class="help-block text-left" ng-show="(signupform.confirmpassword.$touched && signupform.confirmpassword.$dirty && signupform.confirmpassword.$error.pattern)">Email is invalid.</span>
+					      </div>
+					      
+					      <button type="submit" class="btn" disabled="disabled" ng-disabled="signupform.firstName.$touched && signupform.firstName.$pristine || signupform.lastName.$touched && signupform.lastName.$pristine || signupform.mailId.$touched && signupform.mailId.$pristine || signupform.mailId.$touched && signupform.mailId.$dirty && signupform.mailId.$error.pattern || signupform.password.$touched && signupform.password.$pristine || signupform.password.$touched && signupform.password.$dirty && signupform.password.$error.pattern || signupform.confirmpassword.$touched && signupform.confirmpassword.$pristine || signupform.confirmpassword.$touched && signupform.confirmpassword.$dirty && signupform.confirmpassword.$error.pattern || signupform.firstName.$untouched || signupform.lastName.$empty || signupform.mailId.$empty || signupform.password.$empty || signupform.confirmpassword.$empty">create</button>
+					      
+					      <p class="message">Already registered? <a href="#">Sign In</a></p>
+					      
+					    </form>
+					    <form class="login-form">
+					      <div class="form-group" ng-class="">
+					      	<input type="text" placeholder="username">
+					      </div>
+					      <div class="form-group" ng-class="">
+					      	<input type="password" placeholder="password">
+					      </div>
+					      <button>login</button>
+					      <p class="message">Not registered? <a href="#">Create an account</a></p>
+					    </form>
+					  </div>
+					</div>
+				</li>
+			</ul>
+            <!-- /.Login Signup navbar-collapse -->
+            
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <div id="csspseudo-logo">
+                	<a class="navbar-brand csspseudo" href="#">CSS<span>PSEUDO</span></a>
+                </div>
+            </div>
+            <!-- Brand and toggle get grouped for better mobile display -->
+            
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse main-nav" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/#/about">About</a>
+                    </li>
+                    <li class="dropdown">
+                        <a href="/#/csspseudo" class="dropdown-toggle" data-toggle="dropdown">CSS-Pseudo Selectors </a>
+                        <!-- <ul class="dropdown-menu">
+		                  <li><a href="#">One Coloumn Blog</a></li>
+		                  <li><a href="#">two Coloumn Blog</a></li>
+		                  <li><a href="#">Mesonry Blog</a></li>
+		                  <li><a href="#">Fixed Box Blog</a></li>
+		                </ul>-->
+                    </li>
+                    <li>
+                        <a href="/#/writecsspseudo">Write Post</a>
+                    </li>
+                    <li>
+                        <a href="/#/friendsaskquestion">FAQ's</a>
+                    </li>
+                    <li>
+                        <a href="/#/contacts">Contacts</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div id="content" class="container-fluid">
+
+        <div class="row">
+
+            <!-- Blog Entries Column -->
+            <div class="col-md-9">
+				<ng-view></ng-view>
+                <!-- Pager -->
+
+            </div>
+
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-md-3">
+	                	<!-- Blog Search Well -->
+	                	<div class="well">
+	                    	<h4>Blog Search</h4>
+		                    <div class="input-group">
+		                        <input type="text" class="form-control">
+		                        <span class="input-group-btn">
+		                            <button class="btn btn-default" type="button">
+		                                <span class="glyphicon glyphicon-search"></span>
+		                        	</button>
+		                        </span>
+		                    </div>
+	                    <!-- /.input-group -->
+	                    </div>
+
+                <!-- Pseudos -->
+                <div class="well">
+                    <h4>CSS Pseudos</h4>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <ul class="list-unstyled row listing">
+                            	<% for(var i=0; i<csspseudos.length; i++) { %>
+                                <li class="col-lg-6"><a href="/#/csspseudo/<%= csspseudos[i].id %>"><%= csspseudos[i].title %></a></li>
+            					<% } %>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>CSS Pseudos</h4>
+                    <div class="row">
+                        <!-- /.col-lg-12 -->
+                        <div class="col-lg-12">
+                            <ul class="list-styled listing">
+                            	<% for(var i=0; i<syntexs.length; i++) {%>
+                                <li><a href="/#/csspseudo/<%= syntexs[i].id %>"><%= syntexs[i].syntex %></a></li>
+                                <% } %>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                
+                <!-- Blog Archives Well -->
+                <div class="well">
+                    <h4>Archives</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                                <li><a href="#">Category Name</a></li>
+                            </ul>
+                        </div>
+                        <!-- /.col-lg-6 -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                
+                
+                
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
+            </div>
+        </div>
+        <!-- /.row -->
+
+
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="row foottop">
+            <div class="col-lg-3">
+            	<h4><i class="glyphicon glyphicon-link"></i><span>Stay in Touch</span></h4>
+                <nav class="socials">
+                	<a href="javascript:void(0);"><i class="icon-fb">f</i></a>
+                	<a href="javascript:void(0);"><i class="icon-tt">t</i></a>
+                	<a href="javascript:void(0);"><i class="icon-in">in</i></a>
+                	<a href="javascript:void(0);"><i class="icon-gp">g+</i></a>
+                </nav>
+                <div class="clearfix"></div>
+                <p><a class="navbar-brand csspseudo" href="#">CSS<span>PSEUDO</span></a></p>
+                <p class="faqline">Questions or comments? <a href="javascript:void(0);">Drop us a line...</a></p>
+            </div>
+            <div class="col-lg-3">
+            	<h4><i class="glyphicon glyphicon-eye-open"></i><span>Take a look</span></h4>
+                <ul class="footnav">
+                	<li><a href="/#/about">About</a></li>
+                	<li><a href="/#/csspseudo">CSS Pseudo</a></li>
+                	<li><a href="/#/writecsspseudo">Write Post</a></li>
+                    <li><a href="/#/friendsaskquestion">FAQ's</a></li>
+                    <li><a href="/#/contacts">Contacts</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+            	<h4><i class="glyphicon glyphicon-tags"></i><span>Tags</span></h4>
+                <ul class="nav nav-pills">
+                	<% for(var i=0; i<csspseudos.length; i++) { %>
+                    <li><a href="/#/csspseudo/<%= csspseudos[i].id %>"><%= csspseudos[i].title %></a></li>
+					<% } %>
+                </ul>
+            </div>
+            <div class="col-lg-3">
+            	<h4><i class="glyphicon glyphicon-envelope"></i><span>Subscribe for email</span></h4>
+            	<p>Sign up for new Envato content, updates, surveys &amp; offers.</p>
+                <div class="input-group emailsubscrib">
+                    <input type="text" class="form-control" placeholder="Email Subscription">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <span class="glyphicon glyphicon-search"></span>
+                    	</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- /.row -->
+        <div class="row footbottom">
+            <div class="col-lg-12 text-center">
+                <p>&copy;2017 CSSPSEUDO | All Rights Reserved | <a class="" href="#">Terms &amp; Privacy Statements</a></p>
+            </div>
+            <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+    </footer>
+
+
+	<!-- Login Modal Begin -->
+	<div id="loginModal" class="modal fade" role="dialog">
+	  <div class="modal-dialog">
+	        <button type="button" class="close" data-dismiss="modal">&times;</button><div class="form">
+			      <ul class="tab-group" role="tablist">
+			        <li class="tab active"><a href="#signup" aria-controls="signup" role="tab" data-toggle="tab">Sign Up</a></li>
+			        <li class="tab"><a href="#login" aria-controls="login" role="tab" data-toggle="tab">Log In</a></li>
+			      </ul>
+			      
+			      <div class="tab-content sign-content">
+			        <div role="tabpanel" class="tab-pane active" id="signup" ng-controller="MainController">   
+			          <h1>Sign Up for Free</h1>
+			          
+			          <form name="insertuser" ng-submit="submitUserRegistration(user);" novalidate>
+			          
+			          <i id="mdate" style="opacity:0; width:0; height:0; overflow:hidden;"></i>
+			          <div class="top-row">
+			            <div class="field-wrap">
+			              <label>First Name<span class="req">*</span></label>
+			              <input type="text" name="firstname" class="form-control" autocomplete="off" ng-model="user.firstName" required />
+			              <div class="error" ng-show="insertuser.firstname.$error.required && insertuser.firstname.$dirty">
+			              	<span>First Name is required.</span>
+			              </div>
+							              <!--
+							              <div class="error" ng-show="insertuser.firstname.$dirty && insertuser.firstname.$invalid">
+							              	<span ng-show="insertuser.firstname.$error.required">First Name is required.</span>
+							              </div>
+							              -->
+			            </div>
+			        
+			            <div class="field-wrap">
+			              <label>Last Name<span class="req">*</span></label>
+			              <input type="text" name="lastname" class="form-control" autocomplete="off" ng-model="user.lastName" required/>
+						  <div class="error" ng-show="insertuser.lastname.$error.required && insertuser.lastname.$dirty">
+							<span>This field is required</span>
+						  </div>
+							              <!--
+							              <div class="error" ng-show="insertuser.lastname.$dirty && insertuser.lastname.$invalid">
+							              	<span ng-show="insertuser.lastname.$error.required">Last Name is required.</span>
+							              </div>
+							              -->
+			            </div>
+			          </div>
+			
+			          <div class="field-wrap">
+			            <label>Email Address<span class="req">*</span></label>
+			            <input type="email" name="emailid" class="form-control" autocomplete="off" ng-model="user.mailId" required/>
+						<div class="error" ng-show="insertuser.emailid.$error.required && insertuser.emailid.$dirty">
+						  <span>This field is required</span>
+						</div>
+								            <!--
+								            <div class="error" ng-show="insertuser.emailid.$dirty && insertuser.emailid.$invalid">
+								            	<span ng-show="insertuser.emailid.$error.required">Email ID is required.</span>
+								            </div>
+								            -->
+			          </div>
+			          
+			          <div class="top-row">
+			            <div class="field-wrap">
+			              <label>Set A Password<span class="req">*</span></label>
+			              <input type="password" name="password" class="form-control" autocomplete="off" ng-model="user.password" required />
+			              <div class="error" ng-show="insertuser.password.$error.required && insertuser.password.$dirty">
+							  <span>This field is required</span>
+					      </div>
+								              <!--
+								              <div class="error" ng-show="insertuser.password.$dirty && insertuser.password.$invalid">
+								              	<span ng-show="insertuser.password.$error.required">Password is required.</span>
+								              </div>
+								              -->
+			            </div>
+			        
+			            <div class="field-wrap">
+			              <label>Confirm Password<span class="req">*</span></label>
+			              <input type="password" name="confirmpassword" class="form-control" autocomplete="off" ng-model="user.confirmpassword" required/>
+			              <div class="error" ng-show="insertuser.confirmpassword.$error.required && insertuser.confirmpassword.$dirty">
+							  <span>This field is required</span>
+					      </div>
+								              <!--
+								              <div class="error" name="confirmpassword" ng-show="insertuser.confirmpassword.$dirty && insertuser.confirmpassword.$invaild">
+								              	<span ng-show="insertuser.password.$error.required">Password is required.</span>
+								              </div>
+								              -->
+			            </div>
+			            
+			          </div>
+			          <input type="submit" class="button button-block" value="Get Started" ng-disabled="insertuser.firstname.$invalid || insertuser.lastname.$invalid || insertuser.emailid.$invalid || insertuser.password.$invalid || insertuser.confirmpassword.$invaild"/>
+			          </form>
+			
+			        </div>
+			        
+			        <div role="tabpanel" class="tab-pane" id="login">   
+			          <h1>Welcome Back!</h1>
+			          
+			          <form action="/" method="post">
+			          
+			            <div class="field-wrap">
+			            <label>
+			              Email Address<span class="req">*</span>
+			            </label>
+			            <input type="email"required autocomplete="off"/>
+			          </div>
+			          
+			          <div class="field-wrap">
+			            <label>
+			              Password<span class="req">*</span>
+			            </label>
+			            <input type="password"required autocomplete="off"/>
+			          </div>
+			          <p class="forgot"><a href="#">Forgot Password?</a></p>
+			          <button class="button button-block"/>Log In</button>
+			          </form>
+			        </div>
+			      </div>
+			</div>
+	  </div>
+	</div>
+	<!-- Login Modal End -->
+    <!-- jQuery -->
+    <script src="./bower_components/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="./bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    
+    <!-- Angular Core JavaScript -->
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <!-- Angular Dependency JavaScript -->
+    <script src="./bower_components/angular-route/angular-route.min.js"></script>
+    <!-- Angular Dependency JavaScript -->
+    <script src="./bower_components/masonry/dist/masonry.pkgd.min.js"></script>
+    <script src="javascripts/main.js"></script>
+	<script>
+	$('.message a').click(function(){
+	   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+
+
+
+	$("#loginModal").on('shown.bs.modal', function () {
+           
+	$('.form').find('input, textarea').on('keyup blur focus', function (e) {
+  
+  var $this = $(this),
+      label = $this.prev('label');
+
+	  if (e.type === 'keyup') {
+			if ($this.val() === '') {
+          label.removeClass('active highlight');
+        } else {
+          label.addClass('active highlight');
+        }
+    } else if (e.type === 'blur') {
+    	if( $this.val() === '' ) {
+    		label.removeClass('active highlight'); 
+			} else {
+		    label.removeClass('highlight');   
+			}   
+    } else if (e.type === 'focus') {
+      
+      if( $this.val() === '' ) {
+    		label.removeClass('highlight'); 
+			} 
+      else if( $this.val() !== '' ) {
+		    label.addClass('highlight');
+			}
+    }
+
+});
+
+
+    });
+
+$('.tab a').on('click', function (e) {
+  
+  e.preventDefault();
+  
+  $(this).parent().addClass('active');
+  $(this).parent().siblings().removeClass('active');
+  
+  target = $(this).attr('href');
+
+  $('.tab-content > div').not(target).hide();
+  
+  $(target).fadeIn(600);
+  
+});
+
+
+
+function startTime() {
+    var today = new Date();
+    var h = today.getHours();
+    var m = today.getMinutes();
+    var s = today.getSeconds();
+    m = checkTime(m);
+    s = checkTime(s);
+    document.getElementById('mdate').innerText = Date();
+    
+    var t = setTimeout(startTime, 500);
+}
+function checkTime(i) {
+    if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+    return i;
+}
+startTime();
+</script>
+</body>
+</html>
